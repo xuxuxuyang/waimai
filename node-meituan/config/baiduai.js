@@ -2,9 +2,9 @@
 var AipNlpClient = require("baidu-aip-sdk").nlp;
 
 // 设置APPID/AK/SK
-var APP_ID = "";
-var API_KEY = "";
-var SECRET_KEY = "";
+var APP_ID = "22954673";
+var API_KEY = "kwsmyuqoO75YG3CM4QwarH4E";
+var SECRET_KEY = "dQmwDGpejIF19Tnlnwc4l4hPSaB3P8in";
 
 const options = {};
 options["type"] = "4";

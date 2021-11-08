@@ -1,36 +1,22 @@
-// 参数检验
-// 空校验
-// 数字类型校验
-// undefined校验
-// 空格校验
-// 手机号码
-// 密码
 const result = require('./resultdata.js')
-
 class checkings{
 	constructor(ctx,...obj) {
 		this.ctx = ctx
 		this.obj = obj
 	}
-	
-	// 检验前端开发者参数错误，为underfind
-	Errunder(){
-		let bvc = this.obj.indexOf(undefined)
+	Errunder(){// 检验前端开发者参数错误，为underfind
+		let bvc = this.obj.indexOf(undefined) //如果要检索的字符串值没有出现，则该方法返回 -1。
 		if(bvc != -1){
 			throw new result('参数填写错误',400)
 		}
 	}
-	
-	// 校验用户填写为空
-	Parameter(list){
+	Parameter(list){ // 校验用户填写为空
 		let bvc = this.obj.indexOf('')
 		if(bvc != -1){
 			throw new result(list[bvc],202)
 		}
 	}
-	
-	// 校验空格符号
-	Blank(list){
+	Blank(list){	// 校验空格符号
 		let vbn = this.obj.filter(item=>{
 			return item.split(" ").join("").length === 0
 		})
@@ -39,24 +25,18 @@ class checkings{
 			throw new result(list[bvc],202)
 		}
 	}
-	
-	// 校验空数组
-	Arrfun(list,num){
+	Arrfun(list,num){// 校验空数组
 		console.log(JSON.parse(this.obj[num]))
 		if(JSON.parse(this.obj[num]).length === 0){
 			throw new result(list,202)
 		}
 	}
-	
-	// 校验图片未上传
-	Checimg(){
+	Checimg(){// 校验图片未上传
 		if(this.ctx.req.file === undefined){
 			throw new result('请上传图片',202)
 		}
 	}
-	
-	// 校验参数为数字类型
-	Checnumber(list,numarr=0){
+	Checnumber(list,numarr=0){// 校验参数为数字类型
 		if(numarr != 0){
 			var numbering = numarr
 		}else{
@@ -70,32 +50,24 @@ class checkings{
 			throw new result(list[bvc],202)
 		}
 	}
-	
-	// 校验手机号码
-	Phone(mobile){
+	Phone(mobile){	// 校验手机号码
 		let phone = /^1[3456789]\d{9}$/
 		if(!phone.test(this.obj[0])){
 			throw new result(mobile,202)
 		}
 	}
-	
-	// 密码验证：6-20位数字和字母的组合
-	Password(pass){
+	Password(pass){// 密码验证：6-20位数字和字母的组合
 		let reg = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,20}$/
 		if(!reg.test(this.obj[1])){
 			throw new result(pass,202)
 		}
 	}
-	
-	// 验证码
-	Codefun(code){
+	Codefun(code){// 验证码
 		if(this.obj[2] == ''  || this.obj[2].split(" ").join("").length === 0){
 			throw new result(code,202)
 		}
 	}
-	
 }
-
 // 注册
 class chregister extends checkings{
 	chregisterFun(){
@@ -107,14 +79,12 @@ class chregister extends checkings{
 		super.Codefun('请填写验证码')
 	}
 }
-
 // 验证码
 class codeing extends checkings{
 	codeIng(){
 		super.Phone('请填写正确的手机号码')
 	}
 }
-
 // 登录
 class chlogin extends checkings{
 	chloginFun(){
@@ -124,7 +94,6 @@ class chlogin extends checkings{
 		super.Blank(arr)
 	}
 }
-
 // 为你优选
 class chprefer extends checkings{
 	chpreferFun(){
@@ -135,7 +104,6 @@ class chprefer extends checkings{
 		super.Blank(arr)
 	}
 }
-
 // 删除为你优选 || 删除当前商家的商品分类 || 删除当前商家的商品数据
 class chdeleprefer extends checkings{
 	chdelepreferFun(){
@@ -144,7 +112,6 @@ class chdeleprefer extends checkings{
 		super.Blank(['id不能为空'])
 	}
 }
-
 // 更改为你优选
 class chupdataprefer extends checkings{
 	chupdatapreferFun(){
@@ -154,7 +121,6 @@ class chupdataprefer extends checkings{
 		super.Blank(arr)
 	}
 }
-
 // 商家设置的个人信息
 class choss extends checkings{
 	chossFun(numarr){
@@ -167,7 +133,6 @@ class choss extends checkings{
 		super.Checnumber(list,numarr)
 	}
 }
-
 // 商家上传的商品的分类
 class chshopcalss extends checkings{
 	chshopcalssFun(){
@@ -177,7 +142,6 @@ class chshopcalss extends checkings{
 		super.Blank(arr)
 	}
 }
-
 // 上传商品
 class chdishes extends checkings{
 	chdishesFun(numarr){
@@ -191,7 +155,6 @@ class chdishes extends checkings{
 		super.Checnumber(list,numarr)
 	}
 }
-
 // 小程序端综合排序，{单个条件排序} || 小程序端搜索接口 || 小程序提交评论
 class chstarting extends checkings{
 	chstartingFun(arr){
@@ -200,7 +163,6 @@ class chstarting extends checkings{
 		super.Blank(arr)
 	}
 }
-
 // 微信支付
 class chwxpaying extends checkings{
 	chwxpayingFun(){
@@ -219,7 +181,6 @@ class chwxpaying extends checkings{
 		super.Blank(arr)
 	}
 }
-
 module.exports = {
 	chregister,
 	codeing,

@@ -6,24 +6,18 @@ class initdata{
 		this.data = data
 		this.code = code
 	}
-	
-	// 200的正确返回
-	listing(){
+	listing(){// 200的正确返回
 		this.ctx.body = {
 			msg:this.msg,
 			data:this.data
 		}
 		this.ctx.status = this.code
 	}
-	
-	// 参数不对的响应
-	tips(tipmsg,codes){
+	tips(tipmsg,codes){// 参数不对的响应
 		this.ctx.body = {
 			msg:tipmsg
 		}
 		this.ctx.status = codes
 	}
-	
 }
-
 module.exports = initdata

@@ -20,7 +20,6 @@ const Wxpay = require('../../models/wxpay.js')
 const Shopclass = require('../../models/classifica.js')
 // 商品数据
 const Dishesclass = require('../../models/adddishes.js')
-
 // 拉取为你优选数据
 router.get('/getprefer',async ctx=>{
 	let listdata = await Perfer.find()
@@ -30,20 +29,16 @@ router.get('/getprefer',async ctx=>{
 		new initdata(ctx,'SUCCESS',listdata,200).listing()
 	}
 })
-
 // 商家的个人信息 
 router.post('/shop',new Auth().m, async (ctx,next)=>{
 	log(ctx.auth.uid)
 	let listdata = await Business.find({openid:ctx.auth.uid})
-	// log(listdata)
 	if(listdata.length === 0){
 		new initdata(ctx,'没有商家数据',listdata,200).listing()
 	}else{
 		new initdata(ctx,'SUCCESS',listdata,200).listing()
 	}
-	
 })
-
 // 小程序端所有商家的数据
 router.get('/wxshop',async ctx=>{
 	let listdata = await Business.find()
@@ -53,7 +48,6 @@ router.get('/wxshop',async ctx=>{
 		new initdata(ctx,'SUCCESS',listdata,200).listing()
 	}
 })
-
 // 获取当前商家的商品分类
 router.post('/getshopcalss',new Auth().m, async ctx=>{
 	const listdata = await Shopclass.find({openid:ctx.auth.uid})
@@ -63,7 +57,6 @@ router.post('/getshopcalss',new Auth().m, async ctx=>{
 		new initdata(ctx,'SUCCESS',listdata,200).listing()
 	}
 })
-
 // 获取当前商家的商品数据
 router.post('/getdishes', new Auth().m, async ctx=>{
 	const listdata = await Dishesclass.find({openid:ctx.auth.uid})
@@ -72,9 +65,7 @@ router.post('/getdishes', new Auth().m, async ctx=>{
 	}else{
 		new initdata(ctx,'SUCCESS',listdata,200).listing()
 	}
-	
 })
-
 // 小程序端综合排序，{单个条件排序}
 router.post('/starting', async ctx=>{
 	// nums:{1:升序;-1:降序},
@@ -82,22 +73,15 @@ router.post('/starting', async ctx=>{
 	let {screen,nums} = ctx.request.body
 	// 校验
 	new chstarting(ctx,screen,nums).chstartingFun(['必填参数不能为空','必填参数不能为空'])
-
 	let pams = {}
 	pams[screen] = Number(nums)
-	
-	// 排序
-	let listdata = await Business.find({}).sort(pams)
+	let listdata = await Business.find({}).sort(pams)// 排序
 	if(listdata.length === 0){
 		new initdata(ctx,'没有商品数据',listdata,200).listing()
 	}else{
 		new initdata(ctx,'SUCCESS',listdata,200).listing()
 	}
-	
-	
 })
-
-
 // 小程序端多条件查询，排序
 router.post('/multiple',async ctx=>{
 	// lte:小于等于
@@ -114,23 +98,19 @@ router.post('/multiple',async ctx=>{
 	}else{
 		pamsing['_id'] = 1
 	}
-	
 	let finding = {}
 	// 人均价
 	if(capita){
 		finding['capita'] = capita
 	}
-	
 	// 0元起送
 	if(deliver){
 		finding['delivering'] = 0
 	}
-	
 	// 免配送费
 	if(physi){
 		finding['physical'] = 0
 	}
-	
 	// 查询排序
 	let listdata = await Business.find(finding).sort(pamsing)
 	if(listdata.length === 0){
@@ -139,8 +119,6 @@ router.post('/multiple',async ctx=>{
 		new initdata(ctx,'SUCCESS',listdata,200).listing()
 	}
 })
-
-
 // 小程序端搜索接口
 router.post('/search', async ctx=>{
 	let {searchdata} = ctx.request.body
@@ -157,7 +135,6 @@ router.post('/search', async ctx=>{
 		new initdata(ctx,'SUCCESS',listdata,200).listing()
 	}
 })
-
 // 商家的订单
 router.post('/merchantorder',new Auth().m, async ctx=>{
 	// 参数校验

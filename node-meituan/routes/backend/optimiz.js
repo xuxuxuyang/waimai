@@ -1,7 +1,6 @@
 // 路由:()直接实例化
 const router = require('koa-router')()
 const {log} = console
-
 // 校验
 const {
 chregister,
@@ -41,7 +40,6 @@ router.post('/prefer', upload.single('file'),  async ctx=>{
 	log('为你优选')//formdata  ：file======>ctx.req.body
 	// log(ctx.req.body)
 	let {title,lable,file} = ctx.req.body
-	
 	// 参数校验
 	new chprefer(ctx,title,lable).chpreferFun()
 	

@@ -19,8 +19,8 @@ router.post('/wxlogin',async ctx=>{
 	
 	// url请求拼接
 	const param = qs.stringify({
-		appid:'小程序appid',
-		secret:'小程序秘钥',
+		appid:'wxe20627eea1fd0743',
+		secret:'hdjtdxlgxy-8gmzqn0adefb0d5b',
 		js_code:code,
 		grant_type:'authorization_code'
 	})

@@ -5,5 +5,4 @@ class result extends Error{
 		this.code = code
 	}
 }
-
 module.exports = result

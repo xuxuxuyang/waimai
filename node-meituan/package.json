@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@alicloud/pop-core": "^1.7.9",
+    "ali-oss": "^6.16.0",
     "baidu-aip-sdk": "^2.4.6",
     "basic-auth": "^2.0.1",
     "bcryptjs": "^2.4.3",
@@ -17,11 +18,12 @@
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.3.0",
+    "koa-cors": "0.0.16",
     "koa-json": "^2.0.2",
     "koa-multer": "^1.0.2",
     "koa-router": "^8.0.8",
-    "mongoose": "^5.9.10",
-    "nodemon": "^2.0.3",
+    "mongoose": "^5.13.13",
+    "nodemon": "^2.0.14",
     "request": "^2.88.2",
     "silly-datetime": "^0.1.2",
     "wx-js-utils": "^1.0.0"

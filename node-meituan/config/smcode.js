@@ -6,8 +6,8 @@ const initdata = require('./init.js')
 const result = require('./resultdata.js')
 
 var client = new Core({
-  accessKeyId: '阿里云',
-  accessKeySecret: '阿里云',
+  accessKeyId: 'LTAI5tLDp6SWdxVJNeRxhkQ9',
+  accessKeySecret: 'S1FCy24rX1HH5ZRKUBeKoBClXobC3K',
   endpoint: 'https://dysmsapi.aliyuncs.com',
   apiVersion: '2017-05-25'
 });
@@ -19,8 +19,8 @@ let parfun = function(iphone){
 	let params = {
 	  "RegionId": "cn-hangzhou",
 	  "PhoneNumbers": iphone,
-	  "SignName": "爱尚外卖",
-	  "TemplateCode": "SMS_196617024",
+	  "SignName": "华交理院快递代取",
+	  "TemplateCode": "SMS_227264795",
 	  "TemplateParam": `{"code":${codes}}`
 	}
 	return params
