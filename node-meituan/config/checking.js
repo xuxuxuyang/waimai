@@ -1,10 +1,10 @@
 const result = require('./resultdata.js')
 class checkings{
-	constructor(ctx,...obj) {
+	constructor(ctx,...obj) { //多个参数解构出来
 		this.ctx = ctx
-		this.obj = obj
+		this.obj = obj     //obj是一个数组
 	}
-	Errunder(){// 检验前端开发者参数错误，为underfind
+	Errunder(){// 检验前端开发者参数错误，如果前端没传需要的参数 为underfind
 		let bvc = this.obj.indexOf(undefined) //如果要检索的字符串值没有出现，则该方法返回 -1。
 		if(bvc != -1){
 			throw new result('参数填写错误',400)

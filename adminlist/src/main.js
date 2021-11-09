@@ -25,7 +25,7 @@ import store from './store/store.js'
 
 Vue.prototype.$goEasy = new GoEasy({
     host: "hangzhou.goeasy.io", //应用所在的区域地址: 【hangzhou.goeasy.io | singapore.goeasy.io】
-    appkey: "BC-854f6d5d26f347b2a9382b0b8bbe12fc", //替换为您的应用appkey
+    appkey: "BC-a78ac17cbfe64a8e9b9cbcb76417bf57", //替换为您的应用appkey
     onConnected: function() {
         console.log('连接成功！')
     },

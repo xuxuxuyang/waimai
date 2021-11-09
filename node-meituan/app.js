@@ -20,17 +20,16 @@ app.use(abnormal)  //注册处理全局异常处理中间件
 const mongoose = require('mongoose')
 mongoose.set('useFindAndModify', false)// 解决对数据库增删改查出现的警告
 const mburl = require('./config/base.js').mburl// 引入数据库地址
-mongoose.connect(mburl, {
-	// 因为mongoose放弃使用一些指令，导致会出现警告
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then((res)=>{
-	console.log('数据库连接成功')
-})
-.catch((err)=>{
-	console.log('数据库连接失败',err)
-})
+// mongoose.connect(mburl, {// 因为mongoose放弃使用一些指令，导致会出现警告
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// })
+// .then((res)=>{
+// 	console.log('数据库连接成功')
+// })
+// .catch((err)=>{
+// 	console.log('数据库连接失败',err)
+// })
 
 //配置路由
  const router = require('koa-router')()// 路由:()直接实例化
@@ -49,5 +48,5 @@ mongoose.connect(mburl, {
  router.use('/api/pcuser',pcuser) // 配置pc端的注册登录
  app.use(router.routes())//注册路由
  app.use(router.allowedMethods()) //允许路由方法
-
+ 
 console.log('3000端口服务器启动成功')
